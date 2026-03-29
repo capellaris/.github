@@ -1,87 +1,182 @@
-# Hi there, I'm Capellaris 👋
+<div align="center">
 
-- 💻 I love learning about and discussing new technologies.
-- 😎 I like to automate tasks to make life easier.
-- 🚀 Always improving my soft and hard skills, foreign languages, and anything else I can get my hands on.
-- <img width="24px" title="DSC" src="https://www.dscamargo.com.br/assets/ico/favicon-32x32.png"/> <a href="https://www.dscamargo.com.br">More info on my personal website</a>
+<!-- Header -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f172a,50:3b82f6,100:8b5cf6&height=220&section=header&text=Capellaris&fontSize=72&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=AI%20Agent%20Console%20%E2%80%94%20Your%20workforce,%20amplified.&descSize=18&descAlignY=55&descAlign=50" width="100%" />
 
+<!-- Tagline badges -->
 <p>
-  <a href="https://www.linkedin.com/in/daniel13"><img title="Linkedin" height="32px" src="https://www.svgrepo.com/show/922/linkedin.svg" /></a> &nbsp;
-  <a href="mailto:daniel.camargo@hotmail.com"><img title="E-mail" height="32px" src="https://www.svgrepo.com/show/511917/email-1572.svg" /></a> &nbsp;
-  <a href="https://www.instagram.com/capellaris.ai"><img title="Instagram" height="32px" src="https://www.svgrepo.com/show/508844/instagram.svg" /></a>
+  <img src="https://img.shields.io/badge/multi--agent-HMAS-0f172a?style=for-the-badge&logo=openai&logoColor=white" />
+  <img src="https://img.shields.io/badge/MCP-gateway-3b82f6?style=for-the-badge&logo=lightning&logoColor=white" />
+  <img src="https://img.shields.io/badge/multi--org-SaaS-8b5cf6?style=for-the-badge&logo=building&logoColor=white" />
+  <img src="https://img.shields.io/badge/realtime-streaming-10b981?style=for-the-badge&logo=supabase&logoColor=white" />
 </p>
 
+<br/>
 
-## :bar_chart: Stats
+**Capellaris** is an AI-native agent console that lets organizations deploy, orchestrate, and observe<br/>
+autonomous AI agents — each with their own role, memory, knowledge base, and toolset.
 
-<a href="https://github.com/Capellaris">
-  <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api?username=Capellaris&show_icons=true&theme=light" />
-  <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=Capellaris&theme=light&layout=compact" />
-</a>
+<br/>
 
-## :muscle: Tech stacks
+<a href="https://capellaris.dscamargo.com.br">🌐 Live Demo</a> &nbsp;·&nbsp;
+<a href="https://www.instagram.com/capellaris.ai">📸 Instagram</a> &nbsp;·&nbsp;
+<a href="https://www.linkedin.com/in/daniel13">💼 LinkedIn</a>
+
+<br/><br/>
+
+</div>
+
+---
+
+## ⚡ Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        capellaris-ai                            │
+│              Control Plane — React + Express                    │
+│  ┌──────────────┐  ┌──────────────┐  ┌───────────────────────┐ │
+│  │   Frontend    │  │   Core API   │  │    Auth · Invites     │ │
+│  │  React/Vite   │→│  Express/TS  │→│  Supabase · Resend    │ │
+│  │  :5173        │  │  :3001       │  │  OAuth · JWT          │ │
+│  └──────────────┘  └──────┬───────┘  └───────────────────────┘ │
+└────────────────────────────┼────────────────────────────────────┘
+                             │
+            ┌────────────────┼────────────────┐
+            ▼                                 ▼
+┌───────────────────────┐         ┌───────────────────────┐
+│    capellaris-nebula   │         │   capellaris-photon   │
+│   Execution Plane      │         │    MCP Gateway        │
+│                        │         │                       │
+│  FastAPI · CrewAI      │────────→│  TypeScript · stdio   │
+│  Hexagonal Arch        │         │  OAuth credential     │
+│  HMAS Orchestration    │         │  injection per-org    │
+│  :8000                 │         │  :4000                │
+└───────────┬────────────┘         └───────────────────────┘
+            │
+            ▼
+┌───────────────────────────────────────┐
+│          Supabase / PostgreSQL         │
+│  pgvector · RLS · Realtime · Auth     │
+└───────────────────────────────────────┘
+```
+
+<br/>
+
+## 🧠 What makes it different
+
+<table>
+<tr>
+<td width="50%">
+
+### 🤖 Hierarchical Multi-Agent System
+Each org gets 9+ specialized agents (marketing, finance, legal, dev, HR, operations, data, research) orchestrated by a crew manager. Agents collaborate, delegate tasks, and use tools autonomously.
+
+### 🔌 Model Context Protocol
+First-class MCP gateway with per-org credential injection. Connect Google Drive, GitHub, Slack, Brave Search — agents use external tools without users ever seeing an API key.
+
+</td>
+<td width="50%">
+
+### 📚 RAG Knowledge Base
+Upload company docs, business plans, and product info. Vector search (pgvector + HNSW) injects relevant context into agent backstories automatically.
+
+### 🏢 Multi-Org & Multi-Tenant
+Full org lifecycle: create, invite (email/link), join, transfer ownership. RLS-enforced data isolation. Role-based access (owner/admin/member/viewer/guest).
+
+</td>
+</tr>
+</table>
+
+<br/>
+
+## 🛠 Tech Stack
+
+<div align="center">
 
 ### Frontend
-
-<a href="https://github.com/Capellaris">
-  <img width="40px" title="HTML5" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" />
-  <img width="40px" title="CSS3" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" />
-  <img width="40px" title="JavaScript" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />
-  <img width="40px" title="TypeScript" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
-  <img width="40px" title="Sass" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg" />
-  <img width="40px" title="Angular" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angularjs/angularjs-original.svg" />
-  <img width="40px" title="jQuery" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jquery/jquery-original-wordmark.svg" />
-  <img width="40px" title="Bootstrap" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg" />
-  <img width="40px" title="WordPress" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-original.svg" />
-</a>
+<p>
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+  <img src="https://img.shields.io/badge/i18n-4_locales-f59e0b?style=for-the-badge" />
+</p>
 
 ### Backend
+<p>
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/CrewAI-FF6F00?style=for-the-badge&logo=openai&logoColor=white" />
+</p>
 
-<a href="https://github.com/Capellaris">
-  <img width="40px" title="Python" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" />
-  <img width="40px" title="Django" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" />
-  <img width="40px" title="Flask" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original-wordmark.svg" />
-  <img width="40px" title="Node.js" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" />
-</a>
+### Infrastructure
+<p>
+  <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white" />
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/pgvector-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white" />
+  <img src="https://img.shields.io/badge/Cloud_Run-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+</p>
 
-### Databases and Cache
+### AI & Models
+<p>
+  <img src="https://img.shields.io/badge/Gemini-8E75B2?style=for-the-badge&logo=google&logoColor=white" />
+  <img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white" />
+  <img src="https://img.shields.io/badge/Claude-CC785C?style=for-the-badge&logo=anthropic&logoColor=white" />
+  <img src="https://img.shields.io/badge/Embeddings-text--embedding--3--small-10b981?style=for-the-badge" />
+</p>
 
-<a href="https://github.com/Capellaris">
-  <img width="40px" title="Redis" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original-wordmark.svg" />
-  <img width="40px" title="MySQL" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" />
-  <img width="40px" title="PostgreSQL" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" />
-  <img width="40px" title="SQL Server" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" />
-</a>
+### Dev & Ops
+<p>
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
+  <img src="https://img.shields.io/badge/Cloud_Build-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white" />
+  <img src="https://img.shields.io/badge/Resend-000000?style=for-the-badge&logo=resend&logoColor=white" />
+  <img src="https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white" />
+</p>
 
-### Cloud Computing and Servers
+</div>
 
-<a href="https://github.com/Capellaris">
-  <img width="40px" title="GCP" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" />
-  <img width="40px" title="AWS" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" />
-  <img width="40px" title="Azure" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg" />
-  <img width="40px" title="Heroku" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/heroku/heroku-original.svg" />
-  <img width="40px" title="Salesforce" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/salesforce/salesforce-original.svg" />
-  <img width="40px" title="Docker" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" />
-  <img width="40px" title="Kubernetes" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" />
-</a>
+<br/>
 
-### Git and Development Tools
+## 📊 Stats
 
-<a href="https://github.com/Capellaris">
-  <img width="40px" title="Git" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" />
-  <img width="40px" title="GitHub" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" />
-  <img width="40px" title="Bitbucket" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bitbucket/bitbucket-original.svg" />
-  <img width="40px" title="Confluence" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/confluence/confluence-original.svg" />
-  <img width="40px" title="Jira" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original.svg" />
-  <img width="40px" title="VS Code" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" />
-</a>
+<div align="center">
+  <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api?username=Capellaris&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0f172a&title_color=3b82f6&icon_color=8b5cf6&text_color=e2e8f0" />
+  <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=Capellaris&theme=tokyonight&layout=compact&hide_border=true&bg_color=0f172a&title_color=3b82f6&text_color=e2e8f0" />
+</div>
 
-### Miscellaneous
+<br/>
 
-<a href="https://github.com/Capellaris">
-  <img width="40px" title="Linux" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" />
-  <img width="40px" title="Bash" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg" />
-  <img width="40px" title="Arduino" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/arduino/arduino-original.svg" />
-  <img width="40px" title="LaTeX" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/latex/latex-original.svg" />
-  <img width="40px" title="Raspberry Pi" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/raspberrypi/raspberrypi-original.svg" />
-</a>
+## 👤 About the Creator
+
+<table>
+<tr>
+<td>
+
+**Daniel Camargo** — Full-stack engineer, polyglot, automation enthusiast.
+
+Building Capellaris to make AI agents accessible to every team — not just developers.
+
+<p>
+  <a href="https://www.dscamargo.com.br"><img src="https://img.shields.io/badge/Website-dscamargo.com.br-0f172a?style=flat-square&logo=googlechrome&logoColor=white" /></a>
+  <a href="https://www.linkedin.com/in/daniel13"><img src="https://img.shields.io/badge/LinkedIn-daniel13-0A66C2?style=flat-square&logo=linkedin&logoColor=white" /></a>
+  <a href="mailto:daniel.camargo@hotmail.com"><img src="https://img.shields.io/badge/Email-daniel.camargo-EA4335?style=flat-square&logo=gmail&logoColor=white" /></a>
+  <a href="https://www.instagram.com/capellaris.ai"><img src="https://img.shields.io/badge/Instagram-capellaris.ai-E4405F?style=flat-square&logo=instagram&logoColor=white" /></a>
+</p>
+
+</td>
+</tr>
+</table>
+
+<br/>
+
+<!-- Footer -->
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f172a,50:3b82f6,100:8b5cf6&height=100&section=footer" width="100%" />
+
+</div>
