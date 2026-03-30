@@ -28,36 +28,55 @@ autonomous AI agents — each with their own role, memory, knowledge base, and t
 
 ---
 
-## ⚡ Architecture
+## ⚡ How it works
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        capellaris-ai                            │
-│              Control Plane — React + Express                    │
-│  ┌──────────────┐  ┌──────────────┐  ┌───────────────────────┐ │
-│  │   Frontend    │  │   Core API   │  │    Auth · Invites     │ │
-│  │  React/Vite   │→│  Express/TS  │→│  Supabase · Resend    │ │
-│  │  :5173        │  │  :3001       │  │  OAuth · JWT          │ │
-│  └──────────────┘  └──────┬───────┘  └───────────────────────┘ │
-└────────────────────────────┼────────────────────────────────────┘
-                             │
-            ┌────────────────┼────────────────┐
-            ▼                                 ▼
-┌───────────────────────┐         ┌───────────────────────┐
-│    capellaris-nebula   │         │   capellaris-photon   │
-│   Execution Plane      │         │    MCP Gateway        │
-│                        │         │                       │
-│  FastAPI · CrewAI      │────────→│  TypeScript · stdio   │
-│  Hexagonal Arch        │         │  OAuth credential     │
-│  HMAS Orchestration    │         │  injection per-org    │
-│  :8000                 │         │  :4000                │
-└───────────┬────────────┘         └───────────────────────┘
-            │
-            ▼
-┌───────────────────────────────────────┐
-│          Supabase / PostgreSQL         │
-│  pgvector · RLS · Realtime · Auth     │
-└───────────────────────────────────────┘
+```mermaid
+graph LR
+  subgraph You["👤 Your Team"]
+    U[Users]
+  end
+
+  subgraph Console["🖥️ capellaris-ai"]
+    FE[React App]
+    API[Core API]
+  end
+
+  subgraph Brain["🧠 capellaris-nebula"]
+    HMAS[Agent<br/>Orchestrator]
+    A1[📊 Marketing]
+    A2[💰 Finance]
+    A3[⚖️ Legal]
+    A4[💻 Dev]
+    A5[📈 Data]
+    A6[🔬 Research]
+  end
+
+  subgraph Tools["🔌 capellaris-photon"]
+    MCP[MCP Gateway]
+    T1[Google Drive]
+    T2[GitHub]
+    T3[Slack]
+    T4[+ more]
+  end
+
+  subgraph DB["🗄️ Supabase"]
+    PG[(PostgreSQL<br/>+ pgvector)]
+  end
+
+  U -->|chat, tasks| FE
+  FE --> API
+  API --> HMAS
+  HMAS --> A1 & A2 & A3 & A4 & A5 & A6
+  A1 & A2 & A3 & A4 & A5 & A6 -->|use tools| MCP
+  MCP --> T1 & T2 & T3 & T4
+  HMAS <-->|memory, knowledge, RAG| PG
+  API <-->|auth, data| PG
+
+  style You fill:#f8fafc,stroke:#3b82f6,stroke-width:2px
+  style Console fill:#eff6ff,stroke:#3b82f6,stroke-width:2px
+  style Brain fill:#f5f3ff,stroke:#8b5cf6,stroke-width:2px
+  style Tools fill:#ecfdf5,stroke:#10b981,stroke-width:2px
+  style DB fill:#fefce8,stroke:#f59e0b,stroke-width:2px
 ```
 
 <br/>
@@ -142,11 +161,16 @@ Full org lifecycle: create, invite (email/link), join, transfer ownership. RLS-e
 
 <br/>
 
-## 📊 Stats
+## 📦 Repositories
 
 <div align="center">
-  <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api?username=Capellaris&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0f172a&title_color=3b82f6&icon_color=8b5cf6&text_color=e2e8f0" />
-  <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=Capellaris&theme=tokyonight&layout=compact&hide_border=true&bg_color=0f172a&title_color=3b82f6&text_color=e2e8f0" />
+
+| Repo | Description | Stack |
+|:-----|:------------|:------|
+| **capellaris-ai** | Control Plane — console, API, auth, invites | React · Express · TypeScript |
+| **capellaris-nebula** | Execution Plane — HMAS orchestration, RAG, learning | Python · FastAPI · CrewAI |
+| **capellaris-photon** | MCP Gateway — tool proxy with per-org credentials | TypeScript · MCP Protocol |
+
 </div>
 
 <br/>
