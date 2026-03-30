@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Header -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f172a,50:3b82f6,100:8b5cf6&height=220&section=header&text=Capellaris&fontSize=72&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=AI%20Agent%20Console%20%E2%80%94%20Your%20workforce,%20amplified.&descSize=18&descAlignY=55&descAlign=50" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f172a,50:3b82f6,100:8b5cf6&height=220&section=header&text=Capellaris&fontSize=72&fontColor=ffffff&animation=twinkling&fontAlignY=35&desc=AI%20Agent%20Console%20%E2%80%94%20Your%20workforce,%20amplified.&descSize=18&descAlignY=55&descAlign=50" width="100%" />
 
 <!-- Tagline badges -->
 <p>
